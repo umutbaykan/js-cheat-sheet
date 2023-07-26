@@ -23,6 +23,14 @@ cy.fixture('jsonfile.json').as('alias').then((data) => {
   cy.intercept("POST", "/images", {imgUrl: data.imgUrl}).as("anotherAlias")
 })
 
+// if you want to import in a test suite
+let someTestPreCondition
+
+beforeEach(() => {
+  cy.fixture("fullRows").then((data) => (someTestPreCondition = data));
+  cy.intercept("GET", "/getinfo", { data: someTestPreCondition }).as("listGetRequest");
+});
+
 ////// Basic syntax to get and assert
 cy.mount(<ComponentGoesHere />)
 cy.get('[data-cy="something"')
@@ -36,6 +44,7 @@ cy.get().should('') // <-- like jQuery , has many alternatives
   should('have.class', 'classname goes here')
   should('have.length', 5)
   should('have.text', 'text goes here')
+  should("have.value", "Hello world!") // <-- to check the value of existing items
   should('contain.text', 'text goes here')
 
   should('exist')

@@ -8,7 +8,7 @@ const imageClientCall = (userChoices) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: userChoices,
+    body: JSON.stringify(userChoices),
   })
   .then((response) => {
     if (!response.ok) {
@@ -33,6 +33,16 @@ for (let i = 0; i < 10; i++) {
 while (i<10) {
   // do something
 }
+
+// dont forget to return the element if you open brackets
+{rows.map((row) => {
+  return <Row key={row.id} data={row} />;
+})}
+
+// alternative
+{rows.map((row) => 
+  <Row key={row.id} data={row} />
+)}
 
 ////// Objects
 
