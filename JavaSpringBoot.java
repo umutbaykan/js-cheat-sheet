@@ -7,7 +7,10 @@ public class JavaSpringBoot {
     public @ResponseBody String greeting() {
       return "Hello, World";
     }
-  
-
+ 
+    ////// Testing
+    
+ 
+ 
   }
 }

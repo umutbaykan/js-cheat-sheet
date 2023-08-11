@@ -1,7 +1,11 @@
 import org.junit.Test;
+
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.mockito.Mockito;
 
 public class JavaJunit {
   public static void main(String[] args) {
@@ -77,4 +81,59 @@ public class JavaJunit {
       // No need for anything here, this is just a marker
     }
   }
+
+    /////// Mocks
+    // Create a mock of the List interface
+    List<String> mockList = Mockito.mock(List.class);
+    // Create a mock of existing class;
+    Password password = Mockito.mock(Password.class);
+    Mockito.when(password.getPassword()).thenReturn("thepassword");
+    // Mock a collaborator;
+    DatabaseConnection dbMock = mock(DatabaseConnection.class);
+    when(dbMock.query(anyString())).thenReturn("Mocked result");
+
+    // Setting an expectation for a method call
+    when(mockList.get(0)).thenReturn("Mocked Value");
+    // Setting expectations for consecutive method calls. Remember, these are consecutive!
+    when(mockList.size()).thenReturn(2, 3, 4);
+    // Verifying that a method was called with specific arguments
+    verify(mockList).add("Test Value");
+
+    // Stubbing a method to throw an exception
+    when(password.getPassword()).thenThrow(new RuntimeException("Error"));
+
+    // Using argument matchers
+    when(mockList.get(anyInt())).thenReturn("Any Value");
+    Mockito.when(mockList.get(Mockito.anyInt())).thenReturn("Any Value");
+    when(mockList.contains(eq("Test"))).thenReturn(true);
+
+    // Verifying that a method was called a certain number of times
+    // Remember, the last method you are chaning is supposed to be the method of the mocked class
+    verify(mockList, times(3)).clear();
+    Mockito.verify(password, Mockito.times(5)).getPassword();
+
+    // Verifying that a method was never called
+    verify(mockList, never()).isEmpty();
+    Mockito.verify(password, Mockito.never()).setPassword(Mockito.anyString());
+
+    // Verifying that a method was called with correct args
+    // Call a method on the mock
+    mockList.add("Test Value");
+    // Verify that the method was called with any string argument
+    verify(mockList).add(anyString());
+    // Verify that the method was called with the correct argument
+    verify(mockList).add("Test Value");
+
+    // Partial mocking of a real object
+    Collaborator realCollaborator = new Collaborator();
+    Collaborator collaboratorSpy = spy(realCollaborator);
+    when(collaboratorSpy.someMethod()).thenReturn("Mocked result");
+
+    Password pw = Password.createPassword("Hellothere");
+    Password mockPw = Mockito.spy(pw);
+    Mockito.when(mockPw.getPassword()).thenReturn("Your password!");
+    Assert.assertEquals("Your password!", mockPw.getPassword());
+    // Method not explicitly mocked, but inherits it from the original class;
+    Assert.assertEquals("Hi!", mockPw.someMethod());
+
 }

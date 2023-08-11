@@ -152,6 +152,7 @@ public class JavaCheatSheet {
     // List<> allows for polymorphism
     List<String> people = Arrays.asList("Al", "Ankit", "Brent", "Sarika", "amanda", "Hans", "Shivika", "Sarah");
     List<Integer> list = Arrays.asList(7, 4, -3, 18);
-    Set<Integer> set = new HashSet<Integer>( Arrays.asList(5, 6, 10) );      
+    Set<Integer> set = new HashSet<Integer>( Arrays.asList(5, 6, 10) );   
+    
   }
 }
