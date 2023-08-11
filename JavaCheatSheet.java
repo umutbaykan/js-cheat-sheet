@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.IntSummaryStatistics;
 import java.lang.Math;
 
+// your bible
+// https://docs.oracle.com/javase/8/docs/api/
+
 public class JavaCheatSheet {
   public static void main(String[] args) {
     ////// Strings
@@ -42,6 +45,15 @@ public class JavaCheatSheet {
 
     // IndexOf = Finds the index of the character, returns -1 if not found
     if ("aeiouAEIOU".indexOf("h") == -1) {}
+
+    "somestrinG".toLowerCase().chars().distinct().count();
+
+    ////// Characters
+    // Checks if a char is alphabetic, numeric, special symbol etc.
+    Character.isAlphabetic('c');
+    Character.isLetterOrDigit('£');
+    Character.isDigit(0);
+    Character.toUpperCase('c');
 
     ////// Integers
     Integer i = Character.getNumericValue('9');
@@ -102,9 +114,44 @@ public class JavaCheatSheet {
     .stream()
     .filter(c -> c instanceof Integer)
     .collect(Collectors.toList());
+
+
+    ////// HashMaps
+    // Check if a key is present
+    map.containsKey(key) ? map.get(key) : 0;
+    
+    // Iterate over key value pairs
+    for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
+      String key = entry.getKey();
+      Integer value = entry.getValue();
+      System.out.println("Key: " + key + ", Value: " + value);
+    }
+
+    // Counting characters in a string with default values
+    HashMap<Character, Integer> counter = new HashMap<>();
+    for (Character c : str.toCharArray()) {
+      if (counter.containsKey(c)) {
+        counter.put(c, counter.get(c) + 1);
+      } else {
+        counter.put(c, 1);
+      }
+    }
+
+    // Iterating over values of a hashmap
+    // Remember, lambda functions cannot break or return from the function scope on their own, hence the temp variable
+    boolean hasDuplicates = false;
+    for (Integer value : counter.values()) {
+        if (value > 1) {
+            hasDuplicates = true;
+            break;
+        }
+    }
+    return !hasDuplicates;
       
     ////// Lists
     // List<> allows for polymorphism
     List<String> people = Arrays.asList("Al", "Ankit", "Brent", "Sarika", "amanda", "Hans", "Shivika", "Sarah");
+    List<Integer> list = Arrays.asList(7, 4, -3, 18);
+    Set<Integer> set = new HashSet<Integer>( Arrays.asList(5, 6, 10) );      
   }
 }
