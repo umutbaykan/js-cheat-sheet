@@ -111,6 +111,7 @@ public class JavaJunit {
     // Remember, the last method you are chaning is supposed to be the method of the mocked class
     verify(mockList, times(3)).clear();
     Mockito.verify(password, Mockito.times(5)).getPassword();
+    Mockito.verify(password, Mockito.times(1)).setPassword("calledWithThis");
 
     // Verifying that a method was never called
     verify(mockList, never()).isEmpty();

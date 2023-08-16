@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.IntSummaryStatistics;
 import java.lang.Math;
+import java.time.format.DateTimeFormatter;
 
 // your bible
 // https://docs.oracle.com/javase/8/docs/api/
@@ -48,6 +49,10 @@ public class JavaCheatSheet {
 
     "somestrinG".toLowerCase().chars().distinct().count();
 
+    // datetime format to string
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    String formattedLastModified = lastModified.format(formatter);
+
     ////// Characters
     // Checks if a char is alphabetic, numeric, special symbol etc.
     Character.isAlphabetic('c');
@@ -74,6 +79,7 @@ public class JavaCheatSheet {
 		Arrays.stream(names);	// same as Stream.of(names)
     Stream<String> namez = Stream.of("Ava", "Aneri", "Alberto");
     Arrays.stream(new int[] {2, 4, 6, 8, 10});
+    int minTill = Arrays.stream(tills).min().getAsInt();
 
     "somestringHere".chars()
               // maps integers into characters
@@ -115,10 +121,25 @@ public class JavaCheatSheet {
     .filter(c -> c instanceof Integer)
     .collect(Collectors.toList());
 
+    ////// Arrays
+    int[] originalArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+    // Get the first 10 elements
+    int[] firstTenElements = Arrays.copyOfRange(originalArray, 0, 10);
 
     ////// HashMaps
     // Check if a key is present
     map.containsKey(key) ? map.get(key) : 0;
+
+    // Declaring a hash map on initation;
+    Map<Character, Character> inverse = new HashMap<>(Map.of(
+      'w', 'e',
+      's', 'n',
+      'e', 'w',
+      'n', 's'
+    ));
+
+    // Or use the diamond operator (above java 9 only);
+    HashMap<Character, Character> inverse = new HashMap<>();
     
     // Iterate over key value pairs
     for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
@@ -135,6 +156,10 @@ public class JavaCheatSheet {
       } else {
         counter.put(c, 1);
       }
+    }
+    // Neater way
+    for (Integer i : a) {
+      counter.put(i, counter.getOrDefault(i, 0) + 1);
     }
 
     // Iterating over values of a hashmap
@@ -154,5 +179,9 @@ public class JavaCheatSheet {
     List<Integer> list = Arrays.asList(7, 4, -3, 18);
     Set<Integer> set = new HashSet<Integer>( Arrays.asList(5, 6, 10) );   
     
+    // When you remove an element from list, if you give an integer, it removes by index;
+    list.remove(10);
+    // If you provide an object, removes an object
+    list.remove("AI");
   }
 }

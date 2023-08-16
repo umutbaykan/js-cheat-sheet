@@ -73,8 +73,8 @@ public class JavaStreams {
 		Stream<String> rows1 = Files.lines(Paths.get("data.txt"));
 		int rowCount = (int)rows1
 			.map(x -> x.split(","))
-            .filter(x -> x.length == 3)
-			.count();
+          .filter(x -> x.length == 3)
+					.count();
 		System.out.println(rowCount + " rows.");
 		rows1.close();
 		
