@@ -1,11 +1,11 @@
 // Config.json file
-{
-  "compilerOptions": {
-    "strict": true,
-    "outDir": "build"
-  },
-  "include": ["src/**/*.ts"]
-}
+// {
+//   "compilerOptions": {
+//     "strict": true,
+//     "outDir": "build"
+//   },
+//   "include": ["src/**/*.ts"]
+// }
 
 // Basic Types
 const films: string[] = [];
@@ -13,10 +13,6 @@ const filmms: {name: string, age:number} = {name: "john", age:20}
 
 function isEven(n: number): boolean {
   return n % 2 === 0
-}
-
-const isEvenReally = (n: number): boolean => {
-  return n % 2 === 0;
 }
 
 // Functions that deal with anonymous types
@@ -114,3 +110,32 @@ const TextForm = ({updateScore, index, focusIndex}: Props) => {
   // do somehintg
 }
 
+type JSONResponse = {
+  error?: string; // <- means optional
+  user_id: number;
+};
+
+///// React Components
+const Like = ({id, userLikedAlready, updateLikes} : {id:number, userLikedAlready:boolean, updateLikes:() => void}) => {
+
+// Deconstruct upon initialization
+export type Props = {
+  id: number;
+  body: string,
+  updated_at: string,
+  user: {handle: string},
+  likes: {
+    user: {
+      id: number;
+      handle: string
+    }
+  }[],
+}
+
+const [error, setError] = useState<string | boolean>(false);
+
+const Peep = ({props}: {props:Props}) => {
+  const {id, body, updated_at, user} = props;
+}
+
+const newLikes:Props["likes"] = [{user: {id:5, handle:"kay"}} ]
