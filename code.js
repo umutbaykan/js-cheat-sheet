@@ -115,3 +115,6 @@ arr.filter((element) => {
   if (element === "something") {return true}
   // this does not modify the original array
 })
+
+// Sorting
+myArray.sort((a, b) => a.length - b.length);

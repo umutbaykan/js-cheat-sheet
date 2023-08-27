@@ -17,6 +17,12 @@ Add these in your scripts ->
     "test:single": "cypress run --component --spec",
     "test:unit": "cypress run --component",
     "test:feature": "cypress run"
+    
+    // or
+    "test": "cypress open",
+    "test:component": "cypress run --config video=false --component",
+    "test:single": "cypress run --config video=false --component --spec",
+    "test:e2e": "cypress run --config video=false --e2e",
   }
 
 Add these in your .gitignore ->
@@ -40,6 +46,24 @@ Cypress.Commands.add('getByCy', (selector, ...args) =>
 Cypress.Commands.add('getByCyLike', (selector, ...args) => {
   cy.get(`[data-cy*=${selector}]`, ...args)
 })
+
+(If typescript, add these into your cypress.d.ts file:
+import { mount } from 'cypress/react';
+
+// Augment the Cypress namespace to include type definitions for
+// your custom command.
+// Alternatively, can be defined in cypress/support/component.d.ts
+// with a <reference path="./component" /> at the top of your spec.
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      mount: typeof mount;
+      getByCy: typeof string;
+      getByCyLike: typeof string;
+    }
+  }
+}
+)
 
 # Create the components folder
 mkdir components
