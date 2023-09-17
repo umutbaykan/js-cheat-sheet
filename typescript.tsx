@@ -139,3 +139,26 @@ const Peep = ({props}: {props:Props}) => {
 }
 
 const newLikes:Props["likes"] = [{user: {id:5, handle:"kay"}} ]
+
+
+/// Creating a context in react in TS
+export const TrackContext = createContext(trackContextDefaultValue);
+
+type TrackContextValue = {
+  tracks: Track[];
+  setTracks: Dispatch<SetStateAction<Track[]>>;
+};
+
+export const trackContextDefaultValue: TrackContextValue = {
+  tracks: [],
+  setTracks: () => {},
+};
+
+// <TrackContext.Provider value={{ tracks, setTracks }}></TrackContext.Provider>
+
+// React component event types
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // do something 
+  }
+
+

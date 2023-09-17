@@ -1,0 +1,57 @@
+limit order -> instruction gets executed once conditions are favourable / suppose you bough at 1, setting up a sell order at 1.1
+market order -> executes immediately, may execute at a worse price than expected
+stop order -> cuts down the losses - imagine buying something for 2, putting a sell order at 1 not to drag yourself down with it
+stop entry order -> order to open a new position - suppose price is currently at 19, you know it will go skyhigh if it goes above 20, you can set a stop entry order to execute at 20
+trailing stop -> you setup a stop order, but the stop order actively moves based on the step size you have chosen. an example would be if you go short on a usd / jpy ratio of 117.60 and you set a trailing stop of 30 pips away at 117.90. this means if the price rises to 117.90, your original stop would be activated and your losses is at 30
+now lets imagine the other way around, the price moved from 117.60 to 117.55, just a 5 pip drop. your trailing stop doesnt care. but if it goes any further and reaches the 10 step, the trail gets updated. for a price of 117.50, your stop would drop down to 117.80. assume it sinks down to 117.10, your stop has moved all the way down to 117.40 now. all is rosy, you are loving life, but if the trend turns the other way around and the price goes up to 117.50 again, your stop order gets triggered at 117.40, so you have made a profit of 20 pips based on your initial play. Downside is if you had waited, or sold it a bit lower you could have gotten potentially more profit
+
+fill or kill -> the counter order must be found immediately or the broker cancels the deal
+execute and eliminate -> the order will be filled as much as possible for the price you have specified, rest will get cancelled. a market order execution is a good example for this
+
+order duration types ->>
+GTC - good till cancelled - as explained, either you cancel it or it gets executed
+GFD - good for the day - order remains until the end of the trading day it was placed
+GTD - good till date / time - until the specified time
+FOK - fill or kill
+EAE - execute and eliminate 
+
+order book - for assets that are traded on an exchange, each broker has access to a particular assets order book where all current buyers and sellers are listed
+Multilateral Trading Facilities - MTFs these are thingies that accept orders and quote prices on certain stocks, and sometimes offer better prices than the exchanges, but not all brokers have access to them
+Prices offered by exchanges and MTF's are visible which are called lit books. Hidden prices are called dark liquidity pools, often used by institutional investors who dont want to reveal the price, size or origin of their orders.
+
+Slippage - when you execute a market order, it gets executed with the best price your broker can get. lets imagine you have a long position of 17.83 with a stop at 17.69. your stop gets triggered at 17.69, but it gets executed at the next available price of 17.65. so even if you had a stop, your just lost 4 points per share on slippage.
+
+Guaranteed Stop - this is where the broker guarantees the price for you and takes the risk of slippage. this may result in wider spreads in trading or an additional fee for this service
+
+Leverage - :D
+Margin Call -
+Suppose you buy 8000 shares at 220p using leverage, value of your position is at £17.600 total. your margin is 5%, so you pay £880.
+Share price drops 1p to 219p - total value of your position is at £17.520 total. New margin req is 5% so £876, so you may think that you are not in loss, however since all your shares lost 1p, 8000 x 1p equals £80, so you actually lost £80. Your total cost is now 876 + 80 = £956. Unless you have enough funds in your acc, your broker will ask for a margin payment. if you dont do it, they may scale it back or close your position completely
+
+### Trader Types
+Day traders - always closes by the end of the day, never holds anything overnight
+Scalpers - holds stuff for minutes, does very brief trading
+Swing traders - holds the position longer than scalpers, aims to make a profit through price swings
+Momentum traders - Look for stocks that display breakouts on their charts which may lead to a quicker rise or fall in market price.
+Position traders - 
+
+Important to think about breakouts at this point - support and resistence. Support is the lowest point an asset that it does not go below that, resistance is the ceiling. Traders may believe once an asset price goes through those levels, it is free to break further
+
+Options - You are not obliged to buy. The price of buying and selling is fixed until a specified date, before that date comes, you need to decide. You pay a premium to buy an option and leverage is built into the option price. Strike price is the price where parties agree upon
+Out the money - if the strike price is not favorable compared to the current market price of the underlying asset. For a put option, this means the strike price is higher than the current market price. Which means you dont want to be selling for cheaper than the current value of the asset
+Intrinsic value - for the context of options, it is the value an option has if it were exercised immediately. For a put option, this is the diff between strike price and current market price. If the option is OTM (out the money) it doesnt have any intrinsic value because it wouldnt make sense to sell the asset for less than its current market price.
+Extrinsic value - time value. the longer the time remaining to expiry, the greater the chance of further movements in the underlying asset and greater possibility that the option may acquire intrinsic value
+Option value = intrinsic + extrinsic value
+Call options - for buying an asset at a set price
+Put options - for selling an asset at a set price
+Holders - Buyer of an option, seller is the writer
+
+Future Contracts - You are obliged to buy at a set price in the future. You cant back out of it. Suppose you think US Tech 100 will rise in the next 3 months. You can take a futures contract so on that particular date in the future yo ucan buy the market at a lower price than you think it will be. 
+
+CFD - You take position on the price change of an asset. You do not have to own the asset itself. They have leverage as well.
+
+Spot trading - Can refer to both a physical asset and a derivative instrument.
+
+Greeks - greek letters that measure individual risks associated with trading options.
+Delta - the ratio that compares the change in the price of an asset to the corresponding change in the price of its option
+ 

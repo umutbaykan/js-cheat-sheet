@@ -172,7 +172,11 @@ public class JavaCheatSheet {
         }
     }
     return !hasDuplicates;
-      
+
+    // suppose a is an object that has key value pairs
+    a.values().iterator().next() // <-- to iterate over the values
+    a.keySet().iterator().next() // <-- to iterate over keys
+
     ////// Lists
     // List<> allows for polymorphism
     List<String> people = Arrays.asList("Al", "Ankit", "Brent", "Sarika", "amanda", "Hans", "Shivika", "Sarah");

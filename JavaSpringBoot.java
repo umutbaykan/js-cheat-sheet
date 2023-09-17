@@ -21,6 +21,10 @@ public class JavaSpringBoot {
           // Can also use array indexing, $[0]
           // Also chaining $[0].title etc. 
           .andExpect(jsonPath("$", hasSize(0)));
+
+    // Mock a bean vs autowired
+    @Autowired private AwsStorageService awsStorageService;
+    @MockBean private AwsStorageService mockedAwsStorageService;
     }
  
  

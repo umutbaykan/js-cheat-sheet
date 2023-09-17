@@ -125,6 +125,9 @@ public class JavaJunit {
     // Verify that the method was called with the correct argument
     verify(mockList).add("Test Value");
 
+    // Can also verify mocked beans with this method
+    verify(mockedAwsStorageService, Mockito.times(1)).deleteTrackFromStorage("music.mp3-test");
+
     // Partial mocking of a real object
     Collaborator realCollaborator = new Collaborator();
     Collaborator collaboratorSpy = spy(realCollaborator);
